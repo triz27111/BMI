@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">IMC</string>
+    <string name="welcome">Bem-Vindo</string>
+    <string name="your_name">Qual é o seu nome?</string>
+    <string name="next">Próximo</string>
+    <string name="hi">Olá!</string>
+    <string name="male">Homem</string>
+    <string name="female">Mulher</string>
+    <string name="age">Idade</string>
+    <string name="weight">Peso</string>
+    <string name="height">Altura</string>
+    <string name="calculate">Calcular</string>
+    <string name="result">Seu resultado de IMC</string>
+    <string name="number">30,6</string>
+    <string name="have">Você tem obesidade classe I</string>
+    <string name="calc">Novo cálculo</string>
+    <string name="value_age">50</string>
+    <string name="value_weight">97 Kg</string>
+    <string name="value_hight">178 cm</string>
+</resources>
