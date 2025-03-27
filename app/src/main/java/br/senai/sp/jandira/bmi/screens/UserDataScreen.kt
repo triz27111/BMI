@@ -1,3 +1,6 @@
+package br.senai.sp.jandira.bmi.screens
+
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -27,6 +30,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -37,6 +41,13 @@ import br.senai.sp.jandira.bmi.R
 
 @Composable
 fun UserDataScreen(modifier: Modifier = Modifier){
+
+    v
+
+    val context = LocalContext.current
+    val userFile = context.getSharedPreferences("user_file", Context.MODE_PRIVATE)
+    val userName = userFile.getString("user_name", "")
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -54,7 +65,7 @@ fun UserDataScreen(modifier: Modifier = Modifier){
                 .fillMaxSize()
         ){
             Text(
-                text = stringResource(R.string.hi),
+                text = stringResource(R.string.hi) + ", $userName!",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,

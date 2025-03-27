@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -187,13 +186,13 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Text(
-                                        text = stringResource(R.string.weight),
+                                        text = stringResource(R.string.height),
                                         color = Color.Gray,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 20.sp
                                     )
                                     Text(
-                                        text = stringResource(R.string.value_weight),
+                                        text = stringResource(R.string.value_height),
                                         color = Color.Gray,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 20.sp
@@ -212,16 +211,16 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                             onClick = {},
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
+                                .padding(30.dp),
                             colors = ButtonDefaults
                                 .buttonColors(
-                                    containerColor = Color(0xff9c27b0)
+                                    containerColor = Color(0xFFFFEB3B)
                                 ),
                             shape = RoundedCornerShape(12.dp)
                         ) {
                             Text(
                                 text = stringResource(R.string.calc),
-                                fontSize = 20.sp
+                                fontSize = 50.sp
                             )
                         }
                     }
