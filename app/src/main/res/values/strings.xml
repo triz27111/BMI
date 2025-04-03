@@ -13,9 +13,16 @@
     <string name="result">Your BMI Result</string>
     <string name="number">30,6</string>
     <string name="have">You have Class I Obesity</string>
-    <string name="calc">New Calc</string>
     <string name="value_age">50</string>
-    <string name="value_weight">97 Kg</string>
-    <string name="value_height">178 cm</string>
+    <string name="value_weight">58 Kg</string>
+    <string name="value_height">1,7 cm</string>
+    <string name="calc">New Calc</string>
+    <string name="under_weight">You are below your ideal weight!</string>
+    <string name="normal_weight">You have normal body weight!</string>
+    <string name="over_weight">You are slightly over weight!</string>
+    <string name="class1_weight">You have Class I Obesity!</string>
+    <string name="class2_weight">You have Class II Obesity!</string>
+    <string name="class3_weight">You have Class III Obesity!</string>
+
 
 </resources>

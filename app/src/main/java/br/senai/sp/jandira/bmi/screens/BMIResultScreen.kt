@@ -1,5 +1,6 @@
 package br.senai.sp.jandira.bmi.screens
 
+import android.content.Context
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -18,6 +19,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
 import androidx.compose.runtime.Composable
@@ -25,15 +27,26 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import br.senai.sp.jandira.bmi.R
 
 @Composable
-fun BMIResultScreen(modifier: Modifier = Modifier){
+fun BMIResultScreen(navegcao: NavHostController?) {
+
+    val userFile= LocalContext.current
+        .getSharedPreferences("user_file", Context.MODE_PRIVATE)
+
+    val userHeight = userFile.getFloat("user_height", 0.0f)
+    val userWeight = userFile.getFloat("user_Weight", 0.0f)
+    val userAge    = userFile.getInt("user_age", 0)
+
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,7 +73,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                     .weight(1f)
             )
             Card(
-                modifier = modifier
+                modifier = Modifier
                     .fillMaxSize()
                     .weight(4f),
                 colors = CardDefaults
@@ -71,6 +84,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
+                        .height(200.dp)
                 ){
                     Row(
                         modifier = Modifier
@@ -146,7 +160,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                     horizontalAlignment = Alignment.CenterHorizontally
                                 ) {
                                     Text(
-                                        text = stringResource(R.string.age),
+                                        text = "$userAge",
                                         color = Color.Gray,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 20.sp
@@ -172,7 +186,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                         fontSize = 20.sp
                                     )
                                     Text(
-                                        text = stringResource(R.string.value_weight),
+                                        text = "$userWeight Kg",
                                         color = Color.Gray,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 20.sp
@@ -192,7 +206,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                                         fontSize = 20.sp
                                     )
                                     Text(
-                                        text = stringResource(R.string.value_height),
+                                        text = "$userAge",
                                         color = Color.Gray,
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 20.sp
@@ -204,14 +218,16 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                         Column(
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .height(200.dp)
                         ){
 
                         }
+                        HorizontalDivider()
                         Button(
                             onClick = {},
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(30.dp),
+                                .padding(16.dp),
                             colors = ButtonDefaults
                                 .buttonColors(
                                     containerColor = Color(0xFFFFEB3B)
@@ -220,7 +236,7 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
                         ) {
                             Text(
                                 text = stringResource(R.string.calc),
-                                fontSize = 50.sp
+                                fontSize = 20.sp
                             )
                         }
                     }
@@ -234,5 +250,5 @@ fun BMIResultScreen(modifier: Modifier = Modifier){
 @Preview
 @Composable
 private fun HomeScreenPreview(){
-    BMIResultScreen()
+    BMIResultScreen(navegcao = null)
 }

@@ -22,8 +22,8 @@ class MainActivity : ComponentActivity() {
                 startDestination = "home"
             ){//rotas para abrir o aplicativo
                 composable(route = "home"){ HomeScreen(navegacao) }
-                composable(route = "user_data"){ UserDataScreen() }
-                composable(route = "bmi_result"){ BMIResultScreen() }
+                composable(route = "user_data"){ UserDataScreen(navegacao) }
+                composable(route = "bmi_result"){ BMIResultScreen(navegacao) }
             }
         }
     }
