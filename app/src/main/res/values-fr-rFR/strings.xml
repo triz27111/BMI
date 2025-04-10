@@ -20,9 +20,9 @@
     <string name="under_weight">Vous êtes en dessous de votre poids idéal !</string>
     <string name="normal_weight">Vous avez un poids corporel normal !</string>
     <string name="over_weight">Vous êtes légèrement en surpoids !</string>
-    <string name="class1_weight">Vous avez de l'obésité de classe I !</string>
-    <string name="class2_weight">Vous avez de l'obésité de classe II !</string>
-    <string name="class3_weight">Vous avez de l'obésité de classe III !</string>
+    <string name="class1_weight">Vous avez de l\'obésité de classe I !</string>
+    <string name="class2_weight">Vous avez de l\'obésité de classe II !</string>
+    <string name="class3_weight">Vous avez de l\'obésité de classe III !</string>
 
 
 </resources>
