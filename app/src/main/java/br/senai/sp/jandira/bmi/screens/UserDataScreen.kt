@@ -1,3 +1,4 @@
+
 package br.senai.sp.jandira.bmi.screens
 
 import android.content.Context
@@ -14,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Balance
 import androidx.compose.material.icons.filled.Height
@@ -36,6 +38,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -50,13 +54,13 @@ fun UserDataScreen(navegacao: NavHostController?){
         .getSharedPreferences("user_file", Context.MODE_PRIVATE)
     val userName = userFile.getString("user_name", "")
 
-    var ageState = remember {
+    var ageState = remember{
         mutableStateOf("")
     }
-    var weightState =  remember {
+    var weightState = remember{
         mutableStateOf("")
     }
-    var heightState = remember {
+    var heightState = remember{
         mutableStateOf("")
     }
 
@@ -67,8 +71,8 @@ fun UserDataScreen(navegacao: NavHostController?){
             .background(
                 brush = Brush.horizontalGradient(
                     listOf(
-                        Color(0xFF4D2277),
-                        Color(0xFF261872),
+                        Color(0xFF9D00FF),
+                        Color(0xFF583BFF),
                     )
                 )
             )
@@ -78,7 +82,7 @@ fun UserDataScreen(navegacao: NavHostController?){
                 .fillMaxSize()
         ){
             Text(
-                text = stringResource(R.string.hi) + ",$userName!",
+                text = stringResource(R.string.hi) + ", $userName!",
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.White,
@@ -210,7 +214,11 @@ fun UserDataScreen(navegacao: NavHostController?){
                                     text = stringResource(R.string.age)
                                 )
                             },
-                            shape = RoundedCornerShape(16.dp)
+                            shape = RoundedCornerShape(16.dp),
+                            keyboardOptions =  KeyboardOptions(
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Next
+                            )
                         )
                         OutlinedTextField(
                             value = weightState.value,
@@ -231,7 +239,11 @@ fun UserDataScreen(navegacao: NavHostController?){
                                     text = stringResource(R.string.weight)
                                 )
                             },
-                            shape = RoundedCornerShape(16.dp)
+                            shape = RoundedCornerShape(16.dp),
+                            keyboardOptions =  KeyboardOptions(
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Next
+                            )
                         )
                         OutlinedTextField(
                             value = heightState.value,
@@ -252,7 +264,12 @@ fun UserDataScreen(navegacao: NavHostController?){
                                     text = stringResource(R.string.height)
                                 )
                             },
-                            shape = RoundedCornerShape(16.dp)
+                            shape = RoundedCornerShape(16.dp),
+                            keyboardOptions =  KeyboardOptions(
+                                keyboardType = KeyboardType.Number,
+                                imeAction = ImeAction.Done
+                            )
+
                         )
 
                     }
@@ -270,7 +287,7 @@ fun UserDataScreen(navegacao: NavHostController?){
                             .padding(16.dp),
                         colors = ButtonDefaults
                             .buttonColors(
-                                containerColor = Color(0xFF4D2277)
+                                containerColor = Color(0xff9c27b0)
                             )
                     ) {
                         Text(
@@ -287,6 +304,6 @@ fun UserDataScreen(navegacao: NavHostController?){
 
 @Preview
 @Composable
-private fun HomeScreenPreview() {
-    UserDataScreen(navegacao = null)
+private fun UserDataScreenPreview() {
+    UserDataScreen(null)
 }

@@ -43,123 +43,123 @@ import br.senai.sp.jandira.bmi.R
 fun HomeScreen(navegacao: NavHostController?) {
 
     var nameState = remember {
-        mutableStateOf(value = "")
+        mutableStateOf("")
     }
 
-    //Abrir ou fechar um arquivo do tipo SharedPreferences
-    var context  = LocalContext.current
+    // Abrir ou fechar um arquivo do tipo SharedPreferences
+    var context = LocalContext.current
     val userFile = context.getSharedPreferences("user_file", Context.MODE_PRIVATE)
 
     val editor = userFile.edit()
-
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(
                 brush = Brush.horizontalGradient(
                     listOf(
-                        Color(0xFF2E1D5E),
-                        Color(0xFF8364D5)
+                        Color(0xFF1914A2),
+                        Color(0xFF673AB7)
                     )
                 )
             )
     ){
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Transparent),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
-
-    ) {
-        Image(
-            painter = painterResource(
-                R.drawable.yoga
-            ),
-            contentDescription = "",
+        Column (
             modifier = Modifier
-                .padding(
-                    top = 32.dp
-                )
-        )
-        Text(
-            text = stringResource(
-                R.string.welcome
-            ),
-            fontSize = 30.sp,
-            color = Color.White,
-            fontWeight = FontWeight.Bold
-        )
-        Card(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(400.dp),
-            shape = RoundedCornerShape(
-                topStart = 60.dp,
-                topEnd = 60.dp
-            ),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            )
-        ) {
-            Column(
+                .fillMaxSize()
+                .background(Color.Transparent),
+            verticalArrangement = Arrangement.SpaceBetween,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            Image(
+                painter = painterResource(
+                    R.drawable.yoga
+                ),
+                contentDescription = "",
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(32.dp),
-                verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.End
+                    .padding(
+                        top = 32.dp
+                    )
+            )
+            Text(
+                text = stringResource(
+                    R.string.welcome,
+
+                    ),
+                fontSize = 30.sp,
+                color = Color.White,
+                fontWeight = FontWeight.SemiBold
+            )
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(400.dp),
+                shape = RoundedCornerShape(
+                    topStart = 60.dp,
+                    topEnd = 60.dp
+                ),
+                colors = CardDefaults.cardColors(
+                    containerColor = Color.White
+                )
 
             ) {
                 Column (
                     modifier = Modifier
-                        .fillMaxWidth()
+                        .fillMaxSize()
+                        .padding(32.dp),
+                    verticalArrangement = Arrangement.SpaceBetween,
+                    horizontalAlignment = Alignment.End
                 ){
-                    Text(
-                        text = stringResource(
-                            R.string.your_name
-                        ),
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    TextField(
-                        value = nameState.value,
-                        onValueChange = {
-                            nameState.value = it
-                        },
+                    Column (
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(
-                                top = 8.dp
+
+
+                    ){
+                        Text(
+                            text = stringResource(
+                                R.string.your_name
                             ),
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "",
-                                tint = Color.Blue
+                            fontSize = 24.sp
+                        )
+                        TextField(
+                            value = nameState.value,
+                            onValueChange = {
+                                nameState.value = it
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(
+                                    top = 8.dp
+                                ),
+                            leadingIcon = {
+                                Icon(
+                                    imageVector = Icons.Default.Delete,
+                                    contentDescription = "",
+                                    tint = Color.Blue
+                                )
+                            },
+                            keyboardOptions = KeyboardOptions(
+                                keyboardType = KeyboardType.Text,
+                                capitalization = KeyboardCapitalization.Words
                             )
-                        },
-                        keyboardOptions = KeyboardOptions(
-                            keyboardType = KeyboardType.Text,
-                            capitalization =  KeyboardCapitalization.Words
                         )
-                    )
-                }
-                Button(
-                    onClick = {
-                        editor.putString("user_nome", nameState.value)
-                        editor.putInt("user_age", 50)
-                        editor.apply()
-                        navegacao?.navigate("user_data")
-                    }) {
-                    Text(
-                        text = stringResource(
-                            R.string.next
+                    }
+                    Button(
+                        onClick = {
+                            editor.putString("user_name", nameState.value)
+                            editor.putInt("user_age", 50)
+                            editor.apply()
+                            navegacao?.navigate(route = "user_data")
+                        }) {
+                        Text(
+                            text = stringResource(
+                                R.string.next
+                            )
                         )
-                    )
+                    }
                 }
             }
         }
-    }
     }
 }
 
